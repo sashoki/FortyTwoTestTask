@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+<div class="label round secondary"><a href="/homes/create/">Створити статтю</a></div>
+{% for home in homes %}
+<h1><a href="/homes/get/{{ home.id }}/">{{ home.home_title }}</a></h1>
+
+    <p>{% autoescape off %}{{ home.home_text }}{% endautoescape off %}
+
+{% endfor %}
+{% endblock %}

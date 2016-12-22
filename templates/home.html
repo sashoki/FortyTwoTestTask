@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+{% load embed_video_tags %}
+
+{% block content %}
+
+<a class="btn btn-default" href="{% url 'post_edit' pk=home.pk %}"><span class="glyphicon glyphicon-pencil">Редагувати статтю</span></a>
+    <h4><a href="{% url 'homes' %}">{{ home.home_title }}</a></h4>
+        <div>
+            {% if home.home_image %}
+                <img src="{{ MEDIA_URL }}{{ home.home_image.url }}" width="700" height="500"  />
+            {% endif %}
+            <p>{% autoescape off %}{{ home.home_text }}{% endautoescape off %}</p>
+        </div>
+        <div>
+            {% if home.home_video %}
+                <iframe width="560" height="315" src="{{ home.home_video }}" frameborder="0" allowfullscreen></iframe>
+            {% endif %}
+        </div>
+    <h6>{{ home.home_data }}</h6>
+
+{% endblock %}

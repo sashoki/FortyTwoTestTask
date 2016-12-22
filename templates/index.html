@@ -1,0 +1,61 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>42 Coffee Cups Test Assignment</title>
+</head>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}" rel="stylesheet">
+
+<body>
+
+
+<div class="container marketing">
+    <div class="row">
+        <h1>42 Coffee Cups Test Assignment</h1>
+        <hr>
+        <div class="col-sm-6 blog-main">
+            <h2>Name: Olexandr</h2>
+            <h2>Last name:  Petrovskyi</h2>
+            <h2>Date of birth: 19.08.1986</h2>
+        </div>
+        <div class="col-sm-6 col-sm-offset-1 blog-sidebar">
+            <h2>Contacts: 0501693951</h2>
+            <h2>Email: ideauspeha@gmail.com</h2>
+            <h2>Jabber: sashoki</h2>
+            <h2>Skype: sashoki</h2>
+        </div>
+    </div>
+     <div class="row">
+        <hr>
+        <h2>Відправка простих форм AJAX</h2>
+        <hr>
+        <div class="col-sm-12 blog-main">
+            <form id="form">
+                <input type="text" name="name" placeholder="Ваше  імя" required /><br />
+                <input type="text" name="phone" placeholder="Ваш телефон" required /><br />
+                <textarea name="text"></textarea><br />
+                <button>Відправити</button>
+            </form>
+        </div>
+        <div class="col-sm-6  blog-sidebar">
+            <hr>
+            {% block content %}{% endblock %}
+            <hr>
+        </div>
+    </div>
+</div><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'js/piter_js.js' %}"></script>
+    <script src="{% static 'libs/jquery/jquery-1.11.1.min.js' %}"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>
