@@ -7,55 +7,88 @@
     <title>42 Coffee Cups Test Assignment</title>
 </head>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Bootstrap core CSS js-->
+    <link href="{% static 'bootstrap-3.3.7/css/bootstrap.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap-3.3.7/js/bootstrap.js' %}" rel="stylesheet">
 
 <body>
 
+<div class="container">
 
-<div class="container marketing">
-    <div class="row">
-        <h1>42 Coffee Cups Test Assignment</h1>
-        <hr>
-        <div class="col-sm-6 blog-main">
-            <h2>Name: Olexandr</h2>
-            <h2>Last name:  Petrovskyi</h2>
-            <h2>Date of birth: 19.08.1986</h2>
+    <section class="order">
+        <div class="container">
+            <div class="row">
+                <h1>42 Coffee Cups Test Assignment</h1>
+                <hr>
+                <div class="col-md-6">
+                    <h2>Name: Olexandr</h2>
+                    <h2>Last name:  Petrovskyi</h2>
+                    <h2>Date of birth: 19.08.1986</h2>
+                </div>
+                <div class="col-md-6">
+                    <h2>Contacts: 0501693951</h2>
+                    <h2>Email: ideauspeha@gmail.com</h2>
+                    <h2>Jabber: sashoki</h2>
+                    <h2>Skype: sashoki</h2>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-6 col-sm-offset-1 blog-sidebar">
-            <h2>Contacts: 0501693951</h2>
-            <h2>Email: ideauspeha@gmail.com</h2>
-            <h2>Jabber: sashoki</h2>
-            <h2>Skype: sashoki</h2>
+    </section>
+
+    <section class="order">
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Відправка простих форм AJAX</h2>
+                </div>
+                <div class="col-md-6">
+                     <div class="sell-right">
+                         <a href="/add/callback/" class="button fancybox">Замовити зворотній дзвінок</a>
+                     </div>
+                </div>
+            </div>
+            <hr>
         </div>
-    </div>
-     <div class="row">
-        <hr>
-        <h2>Відправка простих форм AJAX</h2>
-        <hr>
-        <div class="col-sm-12 blog-main">
+    </section>
+    <section class="order">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6  blog-sidebar">
+                    <hr>
+                    {% block content %}{% endblock %}
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <div class="hidden">
             <form id="form">
+                <h3>Замовити зворотній звязок</h3>
                 <input type="text" name="name" placeholder="Ваше  імя" required /><br />
                 <input type="text" name="phone" placeholder="Ваш телефон" required /><br />
                 <textarea name="text"></textarea><br />
-                <button>Відправити</button>
+                <button class="button">Відправити</button>
             </form>
         </div>
-        <div class="col-sm-6  blog-sidebar">
-            <hr>
-            {% block content %}{% endblock %}
-            <hr>
-        </div>
-    </div>
+
 </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'js/piter_js.js' %}"></script>
+    <script src="{% static 'js/common.js' %}"></script>
     <script src="{% static 'libs/jquery/jquery-1.11.1.min.js' %}"></script>
+    <script src="{% static 'libs/fancybox/jquery.fancybox.js' %}"></script>
+    <script src="{% static 'libs/owl-carousel/owl.carousel.js' %}"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'css.main.css' %}"></script>
+    <script src="{% static 'css.media.css' %}"></script>
+    <script src="{% static 'css.fonts.css' %}"></script>
+
 
 </body>
 </html>

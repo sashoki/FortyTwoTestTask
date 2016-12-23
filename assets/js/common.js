@@ -72,7 +72,7 @@ $(document).ready(function() {
 	$("#form").submit(function() {
 		$.ajax({
 			type: "GET",
-			url: "mail.php",
+			url: "{% url 'callback' %}",
 			data: $("form").serialize()
 		}).done(function() {
 			alert("Дякуємо за заявку. Скоро ми з вами звяжемося!");

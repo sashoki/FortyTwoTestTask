@@ -1,0 +1,419 @@
+*::-webkit-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*::-moz-placeholder {
+	color: #666;
+	opacity: 1;
+}
+*:-ms-input-placeholder {
+	color: #666;
+	opacity: 1;
+}
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid {
+    border: red 3px solid;
+}
+body input:required:valid,
+body textarea:required:valid {
+	border: green 3px solid;
+}
+body {
+	font-family: "CenturyGothicRegular", sans-serif;
+	font-size: 16px;
+}
+
+.header_topline {
+    background-color: #247B2B;
+    padding: 15px 0;
+    color: #fff;
+}
+
+.header_topline a {
+    color: #fff;
+}
+
+.top_links {
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 10;
+}
+
+.top_links a {
+    text-decoration: underline;
+}
+
+.top_links a:hover {
+    text-decoration: none;
+}
+
+.soc_buttons {
+    text-align: center;
+    margin: 10px;
+}
+
+.soc_buttons > a {
+   text-align: center;
+    font-size: 30px;
+    margin-left: 8px;
+}
+
+.auth_buttons,
+.main_mnu_button{
+    background-color: transparent;
+    border: medium none;
+    font-size: 26px;
+}
+
+.main_mnu_button{
+    color: #fff;
+    padding: 8px 15px 0;
+}
+
+
+.logo {
+    color: #fff;
+    display: block;
+    padding: 15px 0;
+    font-family: "CenturyGothicRegular";
+    font-size: 42px;
+    text-align: center;
+}
+
+.logos  {
+    color: #586061;
+    display: block;
+    padding: 15px 0;
+    font-family: "CenturyGothicRegular";
+    font-size: 40px;
+    text-align: center;
+}
+
+.top_header {
+    background-color: #959E1F;
+}
+
+.top_header .container{
+    //border: #586061 1px solid;
+}
+
+.main_mnu {
+    background-color: #586061;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.main_mnu a {
+    color: #fff;
+    padding: 15px 15px;
+    display: block;
+    -webkit-transition: all .25s;
+    -o-transition: all .25s;
+    transition: all .25s;
+}
+
+.main_mnu a:hover {
+    background-color: #959E1F;
+}
+
+.main_mnu ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    float: left;
+    text-transform: uppercase;
+}
+
+.top_contacts {
+    float: right;
+    font-size: 32px;
+    padding: 0 15px;
+    background-color: #586061;
+    line-height: 53px;
+
+}
+
+.main_mnu ul li {
+    display: inline-block;
+}
+
+.main_mnu ul {
+    z-index: 12;
+}
+
+h1 {
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: "CenturyGothicRegular";
+    font-size: 60px;
+}
+
+.slider_content img {
+    max-width: 100%;
+    position: relative;
+}
+
+.next_button,
+.prev_button {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10em;
+    padding: 0 18px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 46px;
+    position: absolute;
+    z-index: 10;
+    top: 70%;
+}
+
+.next_button {
+    right: 20px;
+}
+
+.prev_button {
+    left: 20px;
+}
+
+
+}
+
+section.order {
+    background-color: #eee;
+    padding: 20px 0;
+}
+
+.sell_descr {
+    font-size: 22px;
+    padding-top: 5px;
+}
+
+.button {
+    background-color: #125A06;
+    border: medium none;
+    display: block;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.button:hover {
+    background-color: #429035;
+}
+
+.button:active {
+    background-color: #14af8d;
+}
+
+.sell_right .button {
+    float: right;
+    margin: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.pop_form input[type=text] {
+    display: block;
+    line-height: 24px;
+    margin: 0 auto 12px;
+    width: 90%;
+    border: #999 3px solid;
+}
+
+.pop_form .button {
+    margin: 20px auto 0;
+}
+
+.pop_form h3 {
+    margin: 10px auto 15px;
+    text-align: center;
+    font-weight: normal;
+    font-family: "CenturyGothicRegular";
+}
+
+.portfolio {
+    display: inline-block;
+    //border: #586061 1px solid;
+    margin: 10px;
+}
+
+.blog-item img {
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.blog-item h3 {
+    text-transform: uppercase;
+    font-family: "CenturyGothicRegular"
+    margin-bottom: 10px;
+}
+
+.blog-item h3 a {
+    text-decoration: underline;
+}
+
+.blog-item p {
+    margin-top: 0;
+}
+
+.blog-item .center {
+    display: block;
+    text-align: center;
+}
+
+.blog-item .center a{
+    text-decoration: underline;
+    color: #586061;
+}
+
+.blog-item .center a:hover{
+    text-decoration: none;
+    color: #959E1F;
+}
+
+.right-aside {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #EEEEEE;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    //border: black 3px solid;
+
+}
+
+footer {
+    //margin-top: 30px;
+    background-color: #959E1F;
+    text-align: center;
+}
+
+footer .container {
+    background-color: #586061;
+}
+
+.becement h3 {
+    color: #fff;
+    font-family: "CenturyGothicRegular"
+    text-size: 10px;
+}
+
+.title-text a {
+    text-decoration: underline;
+    color: #586061;
+    padding-top: 5px;
+}
+
+.title-text a:hover {
+    text-decoration: none;
+    color: #959E1F;
+    padding-top: 5px;
+}
+
+.title-text li {
+    list-style-type: none;
+}
+
+.left-section {
+    display: inline-block;
+    align: left;
+    border: black 1px solid;
+    margin: 10px;
+}
+
+
+.myin-content,
+.header_topline {
+    background-color: #959E1F;
+}
+
+.myin-content .container {
+    background-color: #fff;
+}
+
+//-------------Paginator---------------//
+
+.hr {
+    text-align: center;
+}
+
+.hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+    //border: 1px solid #000; /* Рамка вокруг текста */
+    padding: 2px; /* Поля вокруг текста */
+   }
+
+.hr li a{
+	font-size: 20px;
+	text-align: center;
+	color: black;
+	//margin-left: 10px;
+    transition: 1s color;
+}
+
+.pagination {
+  text-align: center;
+  margin-left: 0;
+  margin-bottom: 1rem; }
+  .pagination::before, .pagination::after {
+    content: ' ';
+    display: table; }
+  .pagination::after {
+    clear: both; }
+  .pagination li {
+    font-size: 0.875rem;
+    margin-right: 0.0625rem;
+    border-radius: 0;
+    display: none; }
+    .pagination li:last-child, .pagination li:first-child {
+      display: inline-block; }
+    @media screen and (min-width: 40em) {
+      .pagination li {
+        display: inline-block; } }
+  .pagination a,
+  .pagination button {
+    color: #0a0a0a;
+    display: block;
+    padding: 0.1875rem 0.625rem;
+    border-radius: 0; }
+    .pagination a:hover,
+    .pagination button:hover {
+      background: #586061; }
+  .pagination .current {
+    padding: 0.1875rem 0.625rem;
+    background: #959E1F;
+    color: #fefefe;
+    cursor: default; }
+  .pagination .disabled {
+    padding: 0.1875rem 0.625rem;
+    color: #cacaca;
+    cursor: not-allowed; }
+    .pagination .disabled:hover {
+      background: transparent; }
+  .pagination .ellipsis::after {
+    content: '\2026';
+    padding: 0.1875rem 0.625rem;
+    color: #0a0a0a; }
+
+.pagination-previous a::before,
+.pagination-previous.disabled::before {
+  content: '\00ab';
+  display: inline-block;
+  margin-right: 0.5rem; }
+
+.pagination-next a::after,
+.pagination-next.disabled::after {
+  content: '\00bb';
+  display: inline-block;
+  margin-left: 0.5rem; }
+

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from forms import HomeForm
 from apps.hello.models import Home
 from django.core.context_processors import csrf
@@ -53,3 +53,15 @@ def post_edit(request, pk):
         form = HomeForm(instance=home)
         args['form'] = form
     return render(request, 'post_edit.html', args)
+
+
+def callback(request):
+    if request.is_ajax():
+        message = "Hello AJAX"
+    else:
+        message = "Hello"
+    return HttpResponse(message)
+
+
+
+
