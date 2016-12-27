@@ -63,5 +63,20 @@ def callback(request):
     return HttpResponse(message)
 
 
+def create_user(request):
+    if request.method == 'POST' and requst.is_ajax():
+        name = request.POST['name']
+        email = request.POST['email']
+        password = request.POST['password']
+
+        User.objects.create(
+            name = name,
+            email = email,
+            password = password
+        )
+
+        return HttpResponse('')
+
+
 
 

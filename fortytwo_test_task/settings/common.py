@@ -44,6 +44,7 @@ INSTALLED_APPS = (
 
     'apps.hello',
     'embed_video',
+    'loginsys',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -36,3 +36,8 @@ class Home(models.Model):
 
     bit_home.short_descriptio = u'Зображення'
     bit_home.allow_tags = True
+
+class User(models.Model):
+    name = models.CharField(max_length=32)
+    email = models.EmailField()
+    password = models.CharField(max_length=128)

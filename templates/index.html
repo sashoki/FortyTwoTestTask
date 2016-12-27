@@ -11,7 +11,68 @@
     <link href="{% static 'bootstrap-3.3.7/css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'bootstrap-3.3.7/js/bootstrap.js' %}" rel="stylesheet">
 
-<body>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <!--<div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="/">Головна</a>
+              <a class="navbar-brand" href="/about_us/">Про нас</a>
+            </div> -->
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <!--<li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Структура організації<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="/consultants/">Консультанти</a></li>
+                    <li><a href="/cell/">Осередки</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Партнерство<span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href=/fpartners/>Закордонні парнери</a></li>
+                    <li><a href="/dpartners/">Внутрішні партнери</a></li>
+                  </ul>
+                </li>
+                <li><a href="/press/">Для преси</a></li>
+                <li><a href="/contacts/">Контакти</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li class="dropdown-header">Nav header</li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li> -->
+                <li><a  href="/auth/register/">Реєстрація</a></li>
+                <li>{% if username %}
+                        <a href="/auth/logout/">Вихід({{ username }})</a>
+                    {% else %}
+                        <a href="/auth/login/">Вхід</a>
+                    {% endif %}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
 
 <div class="container">
 
@@ -34,6 +95,20 @@
             </div>
         </div>
     </section>
+
+    <section class="order">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    {% block login %}{% endblock %}
+                    {% block register %}{% endblock %}
+
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="order">
         <div class="container">
@@ -64,15 +139,55 @@
     </section>
 
 
-        <div class="hidden">
-            <form id="form">
+
+    <!--<div class="container hidden">
+        <form id="new_user_form">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <h2>New User</h2>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputName3">Name</label>
+                    <div class="col-sm-10">
+                        <input class="mdl-textfield__input" type="text" id="name" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputEmail3">Email</label>
+                    <div class="col-sm-10">
+                        <input class="mdl-textfield__input" type="email" id="email" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="inputPassword3">Password</label>
+                    <div class="col-sm-10">
+                        <input class="mdl-textfield__input" type="password" id="password" />
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <button type="submit" class="btr btn-primary">Sing in</button>
+                    </div>
+                </div>
+        </form>
+    </div> -->
+
+
+            <form class="hidden">
                 <h3>Замовити зворотній звязок</h3>
                 <input type="text" name="name" placeholder="Ваше  імя" required /><br />
                 <input type="text" name="phone" placeholder="Ваш телефон" required /><br />
                 <textarea name="text"></textarea><br />
                 <button class="button">Відправити</button>
             </form>
-        </div>
+
 
 </div><!-- /.container -->
 
@@ -88,6 +203,30 @@
     <script src="{% static 'css.main.css' %}"></script>
     <script src="{% static 'css.media.css' %}"></script>
     <script src="{% static 'css.fonts.css' %}"></script>
+
+
+<script type="text/javascript">
+
+    $(document).on('submit', '#new_user_form', function (e) {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url:'/user/create/',
+            date:{
+                name:$('#name').val(),
+                email:$('#email').val(),
+                password:$('#password').val()
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
+            }
+            success:function () {
+                alert('Created New User!')
+
+            }
+        });
+
+    });
+</script>
 
 
 </body>
