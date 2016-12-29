@@ -3,6 +3,7 @@ from forms import HomeForm
 from apps.hello.models import Home
 from django.core.context_processors import csrf
 from django.utils import timezone
+from django.contrib import auth
 
 # Create your views here.
 
@@ -21,6 +22,7 @@ def home(request, pk=1):
     args = {}
     args.update(csrf(request))
     args['home'] = Home.objects.get(pk=pk)
+    args['username'] = auth.get_user(request).username
     return render(request, 'home.html', args)
 
 def create(request):
