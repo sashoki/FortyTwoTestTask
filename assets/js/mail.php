@@ -3,9 +3,9 @@
 $recepient = "sania_piter@mail.ru";
 $sitename = "FortyTwoTestTask";
 
-$name = trim($_GET["name"]);
-$phone = trim($_GET["phone"]);
-$text = trim($_GET["text"]);
+$name = trim($_POST["name"]);
+$phone = trim($_POST["phone"]);
+$text = trim($_POST["text"]);
 
 $pagetitle = "Нова заявка з сайту \"$FortyTwoTestTask\"";
 $message = "Имя: $name \nТелефон: $phone \nТекст: $text";

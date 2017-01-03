@@ -66,16 +66,16 @@ $(document).ready(function() {
 		}, 800);
 		return false;
 	});
-	
+
 	//Аякс отправка форм
 	//Документация: http://api.jquery.com/jquery.ajax/
-	$("#form").submit(function() {
+	$("#callback").submit(function() {
 		$.ajax({
 			type: "GET",
-			url: "{% url 'callback' %}",
+			url: "mail.php",
 			data: $("form").serialize()
 		}).done(function() {
-			alert("Дякуємо за заявку. Скоро ми з вами звяжемося!");
+			alert("Спасибо за заявку!");
 			setTimeout(function() {
 				$.fancybox.close();
 			}, 1000);

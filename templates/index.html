@@ -10,6 +10,7 @@
     <!-- Bootstrap core CSS js-->
     <link href="{% static 'bootstrap-3.3.7/css/bootstrap.css' %}" rel="stylesheet">
     <link href="{% static 'bootstrap-3.3.7/js/bootstrap.js' %}" rel="stylesheet">
+    <link href="{% static 'libs/fancybox/jquery.fancybox.css' %}" rel="stylesheet">
 
 <!-- NAVBAR
 ================================================== -->
@@ -118,13 +119,15 @@
                 </div>
                 <div class="col-md-6">
                      <div class="sell-right">
-                         <a href="/add/callback/" class="button fancybox">Замовити зворотній дзвінок</a>
+                         <a href="#callback" class=" btr btn-primary fancybox">Замовити зворотній дзвінок</a>
                      </div>
                 </div>
             </div>
             <hr>
         </div>
     </section>
+
+
     <section class="order">
         <div class="container">
             <div class="row">
@@ -137,55 +140,43 @@
         </div>
     </section>
 
+    <section class="order">
+        <div class="container">
+                <div class="hidden">
+                    <form id="callback">
+                        {% csrf_token %}
+                            <h2>Замовити зворотній звязок</h2>
 
+                        <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="inputName3">Імя:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" name="name" id="name" placeholder="Ваше  імя" required/>
+                                </div>
+                        </div>
 
-    <!--<div class="container hidden">
-        <form id="new_user_form">
-                {% csrf_token %}
-                <div class="form-group row">
-                    <div class="col-sm-10">
-                        <h2>New User</h2>
-                    </div>
+                        <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="inputPassword3">Телефон:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" name="phone" id="phone" placeholder="Ваш телефон" required/>
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="inputPassword3">Повідомлення:</label>
+                                <div class="col-sm-6">
+                                    <input class="form-control" type="text" name="text" id="text" placeholder="Ваше повідомлення" required/>
+                                </div>
+                        </div>
+
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <input class="btr btn-primary" type="submit" value="&laquo; Відправити &raquo;">
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </form>
                 </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="inputName3">Name</label>
-                    <div class="col-sm-10">
-                        <input class="mdl-textfield__input" type="text" id="name" />
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input class="mdl-textfield__input" type="email" id="email" />
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label" for="inputPassword3">Password</label>
-                    <div class="col-sm-10">
-                        <input class="mdl-textfield__input" type="password" id="password" />
-                    </div>
-                </div>
-
-
-                <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                        <button type="submit" class="btr btn-primary">Sing in</button>
-                    </div>
-                </div>
-        </form>
-    </div> -->
-
-
-            <form class="hidden">
-                <h3>Замовити зворотній звязок</h3>
-                <input type="text" name="name" placeholder="Ваше  імя" required /><br />
-                <input type="text" name="phone" placeholder="Ваш телефон" required /><br />
-                <textarea name="text"></textarea><br />
-                <button class="button">Відправити</button>
-            </form>
+        </div>
+    </section>
 
 
 </div><!-- /.container -->
@@ -195,16 +186,14 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{% static 'js/common.js' %}"></script>
     <script src="{% static 'libs/jquery/jquery-1.11.1.min.js' %}"></script>
-    <script src="{% static 'libs/fancybox/jquery.fancybox.js' %}"></script>
+    <script src="{% static 'libs/fancybox/jquery.fancybox.pack.js' %}"></script>
     <script src="{% static 'libs/owl-carousel/owl.carousel.js' %}"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'css.main.css' %}"></script>
-    <script src="{% static 'css.media.css' %}"></script>
-    <script src="{% static 'css.fonts.css' %}"></script>
 
 
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
 
     $(document).on('submit', '#new_user_form', function (e) {
         e.preventDefault();
@@ -225,8 +214,30 @@
         });
 
     });
-</script>
+</script> -->
+    <head>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".fancybox").fancybox();
+            });
+        </script>
+    </head>
 
+  	<!--    <head>
+	        <script type="text/javascript">
+
+	            function count_rabbits() {
+	                for(var i=1; i<=3; i++) {
+	                   // оператор + соединяет строки
+	                   alert("Из шляпы достали "+i+" кролика!")
+	                }
+	            }
+	         </script>
+	    </head>
+
+	    <body>
+	         <input type="button" onclick="count_rabbits()" value="Считать кролей!"/>
+	    </body> -->
 
 </body>
 </html>

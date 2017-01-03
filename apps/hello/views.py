@@ -58,18 +58,15 @@ def post_edit(request, pk):
 
 
 def callback(request):
-    if request.is_ajax():
-        message = "Hello AJAX"
-    else:
-        message = "Hello"
-    return HttpResponse(message)
+    return render(request, "callback.html")
 
 
-def create_user(request):
+
+"""def create_user(request):
     if request.method == 'POST' and requst.is_ajax():
         name = request.POST['name']
         email = request.POST['email']
-        password = request.POST['password']
+        password = request.POST['text']
 
         User.objects.create(
             name = name,
@@ -77,7 +74,7 @@ def create_user(request):
             password = password
         )
 
-        return HttpResponse('')
+        return HttpResponse('')"""
 
 
 
