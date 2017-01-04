@@ -1,5 +1,9 @@
+# -*- coding: utf-8 -*-
+from django.core.mail import send_mail
+from django.http import BadHeaderError
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
-from forms import HomeForm
+from forms import HomeForm, ContactForm
 from apps.hello.models import Home
 from django.core.context_processors import csrf
 from django.utils import timezone
@@ -15,6 +19,7 @@ def index(request):
 def homes(request, page_number=1):
     args = {}
     args['homes'] = Home.objects.all()
+    args['username'] = auth.get_user(request).username
     return render(request, 'homes.html', args)
 
 
@@ -57,25 +62,38 @@ def post_edit(request, pk):
     return render(request, 'post_edit.html', args)
 
 
-def callback(request):
-    return render(request, "callback.html")
+
+# Функція форми зворотнього звязку
+def callback(reguest):
+    if reguest.method == 'POST':
+        form = ContactForm(reguest.POST)
+        # Якщо форма заповнена коректно, зберегти всі введені користувачем значення
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            phon = form.cleaned_data['phon']
+            email = form.cleaned_data['email']
+            message = form.cleaned_data['message']
+            copy = form.cleaned_data['copy']
+
+            recepients = ['sania_piter@mail.ru']
+            # Якщо користувач хоче отримати копію собі, додаємо його до списку отримувачів
+            if copy:
+                recepients.append(email)
+            try:
+                send_mail(name, phon, message, email, recepients)
+            except BadHeaderError: # Захист від вразливості
+                return HttpResponse('Invalid header found')
+            # Перехід на іншу сторінку, якщо повідомлення відправлено
+            return HttpResponseRedirect("/")
+
+    else:
+        form = ContactForm()
+    # Вивід форми в шаблон
+    return render(reguest, 'callback.html', {'form': form, 'username': auth.get_user(reguest).username})
 
 
-
-"""def create_user(request):
-    if request.method == 'POST' and requst.is_ajax():
-        name = request.POST['name']
-        email = request.POST['email']
-        password = request.POST['text']
-
-        User.objects.create(
-            name = name,
-            email = email,
-            password = password
-        )
-
-        return HttpResponse('')"""
-
-
+"""def thanks(reguest):
+    thanks = 'thanks'
+    return render(reguest, 'thanks.html', {'thanks': thanks})"""
 
 

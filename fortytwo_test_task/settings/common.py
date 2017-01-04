@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 """
 Django settings for fortytwo_test_task project.
 
@@ -129,3 +131,11 @@ TEMPLATE_DIRS = (
 
 # Turn off south during test
 SOUTH_TESTS_MIGRATE = False
+
+# Настройки почтового сервера
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_HOST_USER = 'sania_piter@mail.ru'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+DEFAULT_FROM_EMAIL = 'sania_piter@mail.ru'

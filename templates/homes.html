@@ -3,8 +3,9 @@
 
 
 {% block content %}
-
-<div class="label round secondary"><a href="/homes/create/">Створити статтю</a></div>
+{% if username %}
+    <p><a class="btn btn-primary" href="/homes/create/" role="button">Створити статтю</a></p>
+{% endif %}
 {% for home in homes %}
 <h1><a href="/homes/get/{{ home.id }}/">{{ home.home_title }}</a></h1>
 

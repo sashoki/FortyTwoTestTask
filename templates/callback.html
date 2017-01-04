@@ -1,91 +1,69 @@
 
-{% load staticfiles %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AJAX</title>
-</head>
-
-    <!-- Bootstrap core CSS js-->
-    <link href="{% static 'bootstrap-3.3.7/css/bootstrap.css' %}" rel="stylesheet">
-    <link href="{% static 'bootstrap-3.3.7/js/bootstrap.js' %}" rel="stylesheet">
 
 {% block callback %}
-    <section class="order">
-        <div class="container">
-                <div>
-                    <form id="form" method="post">
+        <section class="order">
+            <div class="container">
+                <div class="hidenn">
+                    <form id="callback" method="post">
                         {% csrf_token %}
+                        {#    {% bootstrap_form form %}#}
+                        {{ form.non_field_errors }}
                             <h2>Замовити зворотній звязок</h2>
 
                         <div class="form-group row">
-                                <label class="col-sm-2 col-form-label" for="inputName3">Імя:</label>
+                                <label class="col-sm-5 col-form-label" for="inputName3">Імя:</label>
                                 <div class="col-sm-6">
+                                    {{ form.name.errors }}
+                                    {#{{ form.name }}#}
                                     <input class="form-control" type="text" name="name" id="name" placeholder="Ваше  імя" required/>
                                 </div>
                         </div>
 
                         <div class="form-group row">
-                                <label class="col-sm-2 col-form-label" for="inputPassword3">Телефон:</label>
+                                <label class="col-sm-5 col-form-label" for="inputPassword3">Телефон:</label>
                                 <div class="col-sm-6">
+                                    {{ form.phon.errors }}
+                                    {#{{ form.phon }}#}
                                     <input class="form-control" type="text" name="phone" id="phone" placeholder="Ваш телефон" required/>
                                 </div>
                         </div>
 
-                        <div class="form-group row">
-                                <label class="col-sm-2 col-form-label" for="inputPassword3">Повідомлення:</label>
+                         <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="inputPassword3">Емейл::</label>
                                 <div class="col-sm-6">
+                                    {{ form.email.errors }}
+                                    {#{{ form.email }}#}
+                                    <input class="form-control" type="text" name="text" id="text" placeholder="Ваш емейл" required/>
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="inputPassword3">Повідомлення:</label>
+                                <div class="col-sm-6">
+                                    {{ form.message.errors }}
+                                    {#{{ form.message }}#}
                                     <input class="form-control" type="text" name="text" id="text" placeholder="Ваше повідомлення" required/>
                                 </div>
                         </div>
 
-                        <input class="btr btn-primary" type="submit" value="&laquo; Відправити &raquo;">
+                        <div class="form-group row">
+                                <label class="col-sm-5 col-form-label" for="inputPassword3">Повідомлення:</label>
+                                <div class="col-sm-6">
+                                    {{ form.message.errors }}
+                                    {#{{ form.message }}#}
+                                    <input class="form-control" type="text" name="text" id="text" placeholder="Ваше повідомлення" required/>
+                                </div>
+                        </div>
 
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <input class="btr btn-primary" type="submit" value="Відправити">
+                        </div>
+                        <div class="col-sm-4"></div>
                     </form>
                 </div>
-        </div>
-    </section>
+            </div>
+        </section>
 {% endblock %}
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'js/common.js' %}"></script>
-    <script src="{% static 'libs/jquery/jquery-1.11.1.min.js' %}"></script>
-    <script src="{% static 'libs/fancybox/jquery.fancybox.js' %}"></script>
-    <script src="{% static 'libs/owl-carousel/owl.carousel.js' %}"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'css.main.css' %}"></script>
-    <script src="{% static 'css.media.css' %}"></script>
-    <script src="{% static 'css.fonts.css' %}"></script>
-
-
-<!-- <script type="text/javascript">
-
-    $(document).on('submit', '#new_user_form', function (e) {
-        e.preventDefault();
-
-        $.ajax({
-            type: 'POST',
-            url:'/user/create/',
-            date:{
-                name:$('#name').val(),
-                email:$('#email').val(),
-                password:$('#password').val()
-                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val()
-            }
-            success:function () {
-                alert('Created New User!')
-
-            }
-        });
-
-    });
-</script> -->
-
-
-</body>
-</html>

@@ -11,6 +11,7 @@ urlpatterns = patterns(
     url(r'^homes/create/$', 'apps.hello.views.create', name='create'),
     url(r'^homes/(?P<pk>\d+)/edit/$', 'apps.hello.views.post_edit', name='post_edit'),
     url(r'^add/callback/$', 'apps.hello.views.callback', name='callback'),
-    url(r'^user/create/$', 'apps.hello.views.create_user', name='create_user'),
+    #url(r'^thanks/$', 'apps.hello.views.thanks', name='thanks'),
+    #url(r'^user/create/$', 'apps.hello.views.create_user', name='create_user'),
 
 )

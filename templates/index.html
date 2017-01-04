@@ -119,11 +119,10 @@
                 </div>
                 <div class="col-md-6">
                      <div class="sell-right">
-                         <a href="#callback" class=" btr btn-primary fancybox">Замовити зворотній дзвінок</a>
+                         <p><a class="btn btn-primary fancybox" href="#callback" role="button">Замовити зворотній дзвінок</a></p>
                      </div>
                 </div>
             </div>
-            <hr>
         </div>
     </section>
 
@@ -140,56 +139,71 @@
         </div>
     </section>
 
-    <section class="order">
-        <div class="container">
+        <section class="order">
+            <div class="container">
                 <div class="hidden">
-                    <form id="callback">
+                    <form id="callback" method="post">
                         {% csrf_token %}
-                            <h2>Замовити зворотній звязок</h2>
+                        {{ form.non_field_errors }}
+                           <h2>Замовити зворотній звязок</h2>
 
                         <div class="form-group row">
+                                    {{ form.name.errors }}
                                 <label class="col-sm-5 col-form-label" for="inputName3">Імя:</label>
                                 <div class="col-sm-6">
+                                    {{ form.name }}
                                     <input class="form-control" type="text" name="name" id="name" placeholder="Ваше  імя" required/>
                                 </div>
                         </div>
 
                         <div class="form-group row">
-                                <label class="col-sm-5 col-form-label" for="inputPassword3">Телефон:</label>
+                                    {{ form.phon.errors }}
+                                <label class="col-sm-5 col-form-label" for="inputPhone3">Телефон:</label>
                                 <div class="col-sm-6">
+                                    {{ form.phon }}
                                     <input class="form-control" type="text" name="phone" id="phone" placeholder="Ваш телефон" required/>
                                 </div>
                         </div>
 
-                        <div class="form-group row">
-                                <label class="col-sm-5 col-form-label" for="inputPassword3">Повідомлення:</label>
+                         <div class="form-group row">
+                                    {{ form.email.errors }}
+                                <label class="col-sm-5 col-form-label" for="inputEmail3">Емейл:</label>
                                 <div class="col-sm-6">
+                                    {{ form.email }}
+                                    <input class="form-control" type="email" name="text" id="email" placeholder="Ваш емейл" required/>
+                                </div>
+                        </div>
+
+                        <div class="form-group row">
+                                    {{ form.message.errors }}
+                                <label class="col-sm-5 col-form-label" for="inputText3">Повідомлення:</label>
+                                <div class="col-sm-6">
+                                    {{ form.message }}
                                     <input class="form-control" type="text" name="text" id="text" placeholder="Ваше повідомлення" required/>
                                 </div>
                         </div>
 
                         <div class="col-sm-4"></div>
                         <div class="col-sm-4">
-                            <input class="btr btn-primary" type="submit" value="&laquo; Відправити &raquo;">
+                            <input class="btr btn-primary" type="submit" value="Відправити">
                         </div>
                         <div class="col-sm-4"></div>
                     </form>
                 </div>
-        </div>
-    </section>
-
+            </div>
+        </section>
 
 </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{% static 'js/common.js' %}"></script>
-    <script src="{% static 'libs/jquery/jquery-1.11.1.min.js' %}"></script>
-    <script src="{% static 'libs/fancybox/jquery.fancybox.pack.js' %}"></script>
-    <script src="{% static 'libs/owl-carousel/owl.carousel.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/common.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libs/jquery/jquery-1.11.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libs/fancybox/jquery.fancybox.pack.js' %}"></script>
+    <script type="text/javascript" src="{% static 'libs/owl-carousel/owl.carousel.js' %}"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
 
 
 
@@ -218,26 +232,32 @@
     <head>
         <script type="text/javascript">
             $(document).ready(function() {
+                //Попап менеджер FancyBox
+                //Документация: http://fancybox.net/howto
+                //<a class="fancybox"><img src="image.jpg" /></a>
+                //<a class="fancybox" data-fancybox-group="group"><img src="image.jpg" /></a>
                 $(".fancybox").fancybox();
+
+
+                //Аякс отправка форм
+                //Документация: http://api.jquery.com/jquery.ajax/
+                $("#callback").submit(function() {
+                    $.ajax({
+                        type: "POST",
+                        url: "{% url 'callback' %}",
+                        data: $("form").serialize()
+                    }).done(function() {
+                        alert("Дякуємо за заявку!");
+                        setTimeout(function() {
+                            $.fancybox.close();
+                        }, 1000);
+                    });
+                    return false;
+                });
             });
         </script>
     </head>
 
-  	<!--    <head>
-	        <script type="text/javascript">
-
-	            function count_rabbits() {
-	                for(var i=1; i<=3; i++) {
-	                   // оператор + соединяет строки
-	                   alert("Из шляпы достали "+i+" кролика!")
-	                }
-	            }
-	         </script>
-	    </head>
-
-	    <body>
-	         <input type="button" onclick="count_rabbits()" value="Считать кролей!"/>
-	    </body> -->
 
 </body>
 </html>
