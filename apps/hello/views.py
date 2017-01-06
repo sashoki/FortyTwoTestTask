@@ -3,11 +3,12 @@ from django.core.mail import send_mail
 from django.http import BadHeaderError
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
-from forms import HomeForm, ContactForm
-from apps.hello.models import Home
+from forms import HomeForm, ContactForm, MyContactsForm
+from apps.hello.models import Home, MyContacts
 from django.core.context_processors import csrf
 from django.utils import timezone
 from django.contrib import auth
+from django.contrib.admin.widgets import AdminDateWidget
 
 # Create your views here.
 
@@ -15,6 +16,11 @@ from django.contrib import auth
 def index(request):
     return render(request, "index.html")
 
+def contacts(request, pk=1):
+    args = {}
+    args['mycontacts'] = MyContacts.objects.get(pk=pk)
+    args['username'] = auth.get_user(request).username
+    return render(request, 'contacts.html', args)
 
 def homes(request, page_number=1):
     args = {}
@@ -97,3 +103,19 @@ def callback(reguest):
     return render(reguest, 'thanks.html', {'thanks': thanks})"""
 
 
+
+def my_edit(request, pk):
+    mycontacts = get_object_or_404(MyContacts, pk=pk)
+    args = {}
+    args['mycontacts'] = mycontacts
+    if request.method == 'POST':
+        form = MyContactsForm(request.POST, instance=mycontacts)
+        if form.is_valid():
+            mycontacts = form.save(commit=False)
+            #mycontacts.date_of_birth = AdminDateWidget()
+            mycontacts.save()
+            return redirect('/', pk=mycontacts.pk)
+    else:
+        form = MyContactsForm(instance=mycontacts)
+        args['form'] = form
+    return render(request, 'my_edit.html', args)

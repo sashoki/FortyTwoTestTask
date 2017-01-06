@@ -36,3 +36,36 @@ class Home(models.Model):
 
     bit_home.short_descriptio = u'Зображення'
     bit_home.allow_tags = True
+
+
+class MyContacts(models.Model):
+    class Meta():
+        db_table = 'mycontacts'
+        verbose_name_plural = "Мої дані"
+        verbose_name = 'Мої дані'
+
+    name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    date_of_birth = models.DateField()
+    photo = models.ImageField(null=True, blank=True, upload_to='image/', verbose_name=u'Зображення')
+    contacts = models.CharField(max_length=100)
+    email = models.EmailField(null=True, blank=True)
+    jaber = models.CharField(max_length=100)
+    skype = models.CharField(max_length=100)
+    other_contacts = models.TextField(null=True, blank=True)
+    bio = models.TextField(null=True, blank=True)
+
+    def __unicode__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
+
+    def bit_mycontacts(self):
+        if self.photo:
+            return u'<img src="%s" width="70"/>' % self.photo.url
+        else:
+            return u'(none)'
+
+    bit_mycontacts.short_descriptio = u'Зображення'
+    bit_mycontacts.allow_tags = True

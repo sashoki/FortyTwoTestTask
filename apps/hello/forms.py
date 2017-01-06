@@ -2,7 +2,7 @@
 
 from django.forms import ModelForm
 from django import forms
-from models import Home
+from models import Home, MyContacts
 
 
 class HomeForm(ModelForm):
@@ -21,3 +21,22 @@ class ContactForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs={'size':'40','class': 'form-control'}))
     message = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control'}))
     copy = forms.BooleanField(required=False)
+
+
+
+class MyContactsForm(ModelForm):
+    class Meta:
+        model = MyContacts
+        fields = '__all__'
+        fields = [
+            'name',
+            'last_name',
+            'date_of_birth',
+            'photo',
+            'contacts',
+            'email',
+            'jaber',
+            'skype',
+            'other_contacts',
+            'bio',
+        ]

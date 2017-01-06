@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+
+{% block contacts %}
+   <section class="order">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-sm-6 col-form-label">
+                        <h1>42 Coffee Cups Test Assignment</h1>
+                    </div>
+                    <div class="col-sm-6 right" >
+                        {% if username %}
+                        <h1><a class="btn btn-primary" href="{% url 'my_edit' pk=mycontacts.pk %}"><span class="glyphicon glyphicon-pencil">Редагувати контактні дані</span></a></h1>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+
+                <hr>
+
+   <section class="order">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="col-sm-5 col-form-label">Name:</h2> <h2  class="col-sm-5">{{ mycontacts.name }}</h2>
+                    <h2 class="col-sm-5 col-form-label">Last name:</h2> <h2 class="col-sm-5">{{ mycontacts.last_name }}</h2>
+                    <h2 class="col-sm-5 col-form-label">Date of birth:</h2> <h2 class="col-sm-5">{{ mycontacts.date_of_birth }}</h2>
+                    <h2 class="col-sm-5 col-form-label">Photo:</h2>
+                    {% if mycontacts.photo %}
+                        <img src="{{ MEDIA_URL }}{{ mycontacts.photo.url }}" width="350" height="450"  />
+                    {% endif %}
+                </div>
+                <div class="col-md-6">
+                    <h2 class="col-sm-5 col-form-label">Contacts:</h2> <h2 class="col-sm-4">{{ mycontacts.contacts }}</h2>
+                    <h2 class="col-sm-5 col-form-label">Email:</h2> <h2 class="col-sm-4">{{ mycontacts.email }}</h2>
+                    <h2 class="col-sm-5 col-form-label">Jabber:</h2> <h2 class="col-sm-4">{{ mycontacts.jaber }}</h2>
+                    <h2 class="col-sm-5 col-form-label">Skype:</h2> <h2 class="col-sm-4">{{ mycontacts.skype }}</h2>
+                    <h2 class="col-sm-6 col-form-label">Other contacts:</h2>
+                    <h4 class="col-sm-10">{{ mycontacts.other_contacts }}</h4>
+                    <h2 class="col-sm-5 col-form-label">Bio:</h2>
+                    <h4 class="col-sm-10">{{ mycontacts.bio }}</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

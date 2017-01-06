@@ -1,0 +1,102 @@
+{% extends 'index.html' %}
+
+{% block edit %}
+
+<div class="row">
+    <h1>42 Coffee Cups Test Assignment</h1>
+    <hr>
+    <div class="col-md-12">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <div class="col-md-6">
+                <div class="form-group row">
+                    {{ form.name.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Name:</label>
+                    <div class="col-sm-6">
+                        {{ form.name }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{ form.last_name.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Last name:</label>
+                    <div class="col-sm-6">
+                        {{ form.last_name }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{ form.date_of_birth.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Date of birth:</label>
+                    <div class="col-sm-6">
+                        {{ form.date_of_birth }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{ form.photo.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Photo:</label>
+                    <div class="col-sm-6">
+                        {{ form.photo }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group row">
+                    {{ form.contacts.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Contacts:</label>
+                    <div class="col-sm-6">
+                        {{ form.contacts }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{ form.email.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Email:</label>
+                    <div class="col-sm-6">
+                        {{ form.email }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{ form.jaber.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Jabber:</label>
+                    <div class="col-sm-6">
+                        {{ form.jaber }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{ form.skype.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Skype:</label>
+                    <div class="col-sm-6">
+                        {{ form.skype }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{ form.other_contacts.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Other contacts:</label>
+                    <div class="col-sm-6">
+                        {{ form.other_contacts }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{ form.bio.errors }}
+                    <label class="col-sm-5 col-form-label" for="inputName3">Bio:</label>
+                    <div class="col-sm-6">
+                        {{ form.bio }}
+                    </div>
+                </div>
+            </div>
+
+
+            <button type="submit">Save</button>
+        </form>
+            <hr>
+</div>
+
+{% endblock %}
+

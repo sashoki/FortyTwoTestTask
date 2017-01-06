@@ -60,6 +60,7 @@
                     <li><a href="#">One more separated link</a></li>
                   </ul>
                 </li> -->
+                <li><a href="/">Головна</a></li>
                 <li><a  href="/auth/register/">Реєстрація</a></li>
                 <li>{% if username %}
                         <a href="/auth/logout/">Вихід({{ username }})</a>
@@ -90,36 +91,20 @@
         </div>
     </section>
 
-    <section class="order">
-        <div class="container">
-            <div class="row">
-                <h1>42 Coffee Cups Test Assignment</h1>
-                <hr>
-                <div class="col-md-6">
-                    <h2>Name: Olexandr</h2>
-                    <h2>Last name:  Petrovskyi</h2>
-                    <h2>Date of birth: 19.08.1986</h2>
-                </div>
-                <div class="col-md-6">
-                    <h2>Contacts: 0501693951</h2>
-                    <h2>Email: ideauspeha@gmail.com</h2>
-                    <h2>Jabber: sashoki</h2>
-                    <h2>Skype: sashoki</h2>
-                </div>
-            </div>
-        </div>
-    </section>
+
+            {% block contacts %}{% endblock %}
+            {% block edit %}{% endblock %}
 
     <section class="order">
         <div class="container">
             <hr>
             <div class="row">
                 <div class="col-md-6">
-                    <h2>Відправка простих форм AJAX</h2>
+                    <h1>Відправка простих форм AJAX</h1>
                 </div>
                 <div class="col-md-6">
                      <div class="sell-right">
-                         <p><a class="btn btn-primary fancybox" href="#callback" role="button">Замовити зворотній дзвінок</a></p>
+                         <h1><p><a class="btn btn-primary fancybox" href="#callback" role="button">Замовити зворотній дзвінок</a></p></h1>
                      </div>
                 </div>
             </div>
