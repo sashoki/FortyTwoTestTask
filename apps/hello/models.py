@@ -6,6 +6,8 @@ from django.db import models
 #from ckeditor.fields import RichTextField
 from embed_video.fields import EmbedVideoField
 from django.utils import timezone
+from ckeditor.fields import RichTextField
+from tinymce.models import HTMLField
 
 # Create your models here.
 
@@ -17,7 +19,7 @@ class Home(models.Model):
         verbose_name = 'Головна сторінка'
     home_title = models.CharField(max_length=200)
     home_text_min = models.TextField(null=True, blank=True)
-    home_text = models.TextField()
+    home_text = HTMLField()
     home_image = models.ImageField(null=True, blank=True, upload_to='image/', verbose_name=u'Зображення')
     home_video = EmbedVideoField(null=True, blank=True, verbose_name=u'Відео')
     home_data = models.DateTimeField(default=timezone.now)
@@ -52,8 +54,8 @@ class MyContacts(models.Model):
     email = models.EmailField(null=True, blank=True)
     jaber = models.CharField(max_length=100)
     skype = models.CharField(max_length=100)
-    other_contacts = models.TextField(null=True, blank=True)
-    bio = models.TextField(null=True, blank=True)
+    other_contacts = RichTextField(null=True, blank=True)
+    bio = HTMLField(null=True, blank=True)
 
     def __unicode__(self):
         return self.name

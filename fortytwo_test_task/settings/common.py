@@ -47,7 +47,35 @@ INSTALLED_APPS = (
     'apps.hello',
     'embed_video',
     'loginsys',
+    'ckeditor',
+    'tinymce',
 )
+
+CREDITOR_UPLOAD_PATH = "/uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'height': "300px",
+        'width': "500px",
+        'toolbar': 'None',
+        'toolbarCanCollapse': False,
+        'forcePasteAsPlainText': True
+    }
+}
+
+CREDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CREDITOR_IMAGE_BACKEND = 'pillow'
+
+
+TINYMCE_DEFAULT_CONFIG = {
+        'height': "300px",
+        'width': "500px",
+        'theme_advanced_buttons3' : "fontselect,fontsizeselect,emotions,preview,",
+        'paste_remove_styles': 'true',
+	    'paste_remove_styles_if_webkit': 'true',
+	    'paste_strip_class_attributes': 'all',
+}
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -119,6 +147,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'assets'),
 )
 
+ADMIN_MEDIA_PREFIX = '/admin-media/'
 
 TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.request",
                                "django.contrib.auth.context_processors.auth",

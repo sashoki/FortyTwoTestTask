@@ -112,7 +112,7 @@ def my_edit(request, pk):
         form = MyContactsForm(request.POST, instance=mycontacts)
         if form.is_valid():
             mycontacts = form.save(commit=False)
-            #mycontacts.date_of_birth = AdminDateWidget()
+            #mycontacts.date_of_birth = AdminDateWidget.media()
             mycontacts.save()
             return redirect('/', pk=mycontacts.pk)
     else:

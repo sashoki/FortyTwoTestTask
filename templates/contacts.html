@@ -40,9 +40,9 @@
                     <h2 class="col-sm-5 col-form-label">Jabber:</h2> <h2 class="col-sm-4">{{ mycontacts.jaber }}</h2>
                     <h2 class="col-sm-5 col-form-label">Skype:</h2> <h2 class="col-sm-4">{{ mycontacts.skype }}</h2>
                     <h2 class="col-sm-6 col-form-label">Other contacts:</h2>
-                    <h4 class="col-sm-10">{{ mycontacts.other_contacts }}</h4>
+                    <h4 class="col-sm-10">{% autoescape off %}{{ mycontacts.other_contacts }}{% endautoescape off %}</h4>
                     <h2 class="col-sm-5 col-form-label">Bio:</h2>
-                    <h4 class="col-sm-10">{{ mycontacts.bio }}</h4>
+                    <h4 class="col-sm-10">{% autoescape off %}{{ mycontacts.bio }}{% endautoescape off %}</h4>
                 </div>
             </div>
         </div>
